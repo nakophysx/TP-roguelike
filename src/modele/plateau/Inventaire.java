@@ -1,3 +1,4 @@
+package modele.plateau;
 public class Inventaire {
     public int nCles;
     public int nCapsules;
@@ -16,7 +17,7 @@ public class Inventaire {
 
     public void ajouterCle() { nCles++;}
 
-    public boolean utiliserCapsules(){
+    public boolean utiliserCapsule(){
         if (nCapsules != 0)
         {
             nCapsules--;
@@ -24,5 +25,5 @@ public class Inventaire {
         } else return false;
     }
 
-    public void ajouterCapsules() { nCapsules++;}
+    public void ajouterCapsule() { nCapsules++;}
 }

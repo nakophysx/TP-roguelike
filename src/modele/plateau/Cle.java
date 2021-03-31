@@ -13,7 +13,6 @@ public class Cle extends Pickup {
     {
         if (disponible)
         {
-            super();
             jeu.getHeros().getInventaire().ajouterCle();
         }
     }

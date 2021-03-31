@@ -1,9 +1,9 @@
-public class Pickup extends EntiteStatique implements Interactive{
-    private boolean disponible = true;
+package modele.plateau;
+public abstract class Pickup extends EntiteStatique implements Interactive{
+    protected boolean disponible = true;
 
-    public Interactive(Jeu _jeu) { super(_jeu);}
+    public Pickup(Jeu _jeu) { super(_jeu);}
 
-    @Override
     public void interact(){
         disponible = false;
     }

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package modele.plateau;
-import plateteau.Inventaire;
-
 /**
  * Héros du jeu
  */
@@ -67,4 +65,4 @@ public class Heros {
     }
 }
 
-public enum Orientation { HAUT, BAS, DROITE, GAUCHE }
+enum Orientation { HAUT, BAS, DROITE, GAUCHE }

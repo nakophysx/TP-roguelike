@@ -12,7 +12,6 @@ public class Coffre extends Pickup {
     public void interact() {
         if (disponible)
         {
-            super();
 
         }
     }

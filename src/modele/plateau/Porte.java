@@ -16,4 +16,3 @@ public class Porte extends EntiteStatique implements Interactive{
             verrouille = false;
     }
 }
-package modele.plateau;
