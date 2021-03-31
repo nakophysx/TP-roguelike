@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package modele.plateau;
+import plateteau.Inventaire;
 
 /**
  * Héros du jeu
@@ -11,8 +12,9 @@ package modele.plateau;
 public class Heros {
     private int x;
     private int y;
-
+    private Inventaire inv;
     private Jeu jeu;
+    private Orientation ori;
 
     public int getX() {
         return x;
@@ -26,7 +28,10 @@ public class Heros {
         jeu = _jeu;
         x = _x;
         y = _y;
+        inv = new Inventaire();
     }
+
+    public Inventaire getInventaire() {return inv;}
 
     public void droite() {
         if (traversable(x+1, y)) {
@@ -61,3 +66,5 @@ public class Heros {
         }
     }
 }
+
+public enum Orientation { HAUT, BAS, DROITE, GAUCHE }

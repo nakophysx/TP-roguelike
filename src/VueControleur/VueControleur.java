@@ -38,7 +38,7 @@ public class VueControleur extends JFrame implements Observer {
 
 
     public VueControleur(Jeu _jeu) {
-        sizeX = jeu.SIZE_X;
+        sizeX = _jeu.SIZE_X;
         sizeY = _jeu.SIZE_Y;
         jeu = _jeu;
 
@@ -53,10 +53,9 @@ public class VueControleur extends JFrame implements Observer {
             public void keyPressed(KeyEvent e) {
                 switch(e.getKeyCode()) {  // on regarde quelle touche a été pressée
                     case KeyEvent.VK_LEFT : jeu.getHeros().gauche(); break;
-                    case KeyEvent.VK_RIGHT : jeu.getHeros().droite();break;
+                    case KeyEvent.VK_RIGHT : jeu.getHeros().droite(); break;
                     case KeyEvent.VK_DOWN : jeu.getHeros().bas(); break;
                     case KeyEvent.VK_UP : jeu.getHeros().haut(); break;
-
                 }
             }
         });
