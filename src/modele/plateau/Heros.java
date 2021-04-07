@@ -26,37 +26,48 @@ public class Heros {
         jeu = _jeu;
         x = _x;
         y = _y;
+        ori = Orientation.DROITE;
         inv = new Inventaire();
     }
 
     public Inventaire getInventaire() {return inv;}
 
     public void droite() {
-        if (traversable(x+1, y)) {
-            x ++;
-            jeu.interact(x,y);
-        }
+        if(ori == Orientation.DROITE)
+        {
+            if (traversable(x+1, y)) {
+                x++;
+                jeu.interact(x, y);
+            }
+        } else { ori = Orientation.DROITE; }
     }
 
     public void gauche() {
-        if (traversable(x-1, y)) {
-            x --;
-            jeu.interact(x,y);
-        }
+        if(ori == Orientation.GAUCHE) {
+            if (traversable(x - 1, y)) {
+                x--;
+                jeu.interact(x, y);
+            }
+        } else { ori = Orientation.GAUCHE; }
     }
 
     public void bas() {
-        if (traversable(x, y+1)) {
-            y ++;
-            jeu.interact(x,y);
-        }
+        if (ori == Orientation.BAS) {
+            if (traversable(x, y + 1)) {
+                y++;
+                jeu.interact(x, y);
+            }
+        } else {ori = Orientation.BAS;}
     }
 
     public void haut() {
-        if (traversable(x, y-1)) {
-            y --;
-            jeu.interact(x,y);
-        }
+        if (ori == Orientation.HAUT) {
+            if (traversable(x, y-1)) {
+                y --;
+                jeu.interact(x,y);
+            }
+        } else {ori = Orientation.HAUT; }
+
     }
 
     private boolean traversable(int x, int y) {
