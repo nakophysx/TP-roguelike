@@ -22,6 +22,10 @@ public class Heros {
         return y;
     }
 
+    public Orientation getOrientation() {
+        return ori;
+    }
+
     public Heros(Jeu _jeu, int _x, int _y) {
         jeu = _jeu;
         x = _x;
@@ -80,4 +84,3 @@ public class Heros {
     }
 }
 
-enum Orientation { HAUT, BAS, DROITE, GAUCHE }

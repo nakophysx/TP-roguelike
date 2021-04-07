@@ -29,7 +29,10 @@ public class VueControleur extends JFrame implements Observer {
     private int sizeY;
 
     // icones affichées dans la grille
-    private ImageIcon icoHero;
+    private ImageIcon icoHeroDroite;
+    private ImageIcon icoHeroGauche;
+    private ImageIcon icoHeroHaut;
+    private ImageIcon icoHeroBas;
     private ImageIcon icoCaseNormale;
     private ImageIcon icoMur;
     private ImageIcon icoCle;
@@ -67,7 +70,10 @@ public class VueControleur extends JFrame implements Observer {
     }
 
     private void chargerLesIcones() {
-        icoHero = chargerIcone("Images/Pacman.png");
+        icoHeroDroite = chargerIcone("Images/PacmanRight.png");
+        icoHeroGauche = chargerIcone("Images/PacmanLeft.png");
+        icoHeroBas = chargerIcone("Images/PacmanDown.png");
+        icoHeroHaut = chargerIcone("Images/PacmanUp.png");
         icoCaseNormale = chargerIcone("Images/Vide.png");
         icoMur = chargerIcone("Images/Mur.png");
         icoCle = chargerIcone("Images/Cle.png");
@@ -140,8 +146,20 @@ public class VueControleur extends JFrame implements Observer {
         }
 
 
-
-        tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHero);
+        switch(jeu.getHeros().getOrientation()) {
+            case HAUT:
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroHaut);
+                break;
+            case BAS:
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroBas);
+                break;
+            case DROITE:
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroDroite);
+                break;
+            case GAUCHE:
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroGauche);
+                break;
+        }
 
     }
 
