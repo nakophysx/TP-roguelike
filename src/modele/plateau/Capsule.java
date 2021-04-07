@@ -5,7 +5,7 @@ public class Capsule extends Pickup {
 
     @Override
     public boolean traversable() {
-        return false;
+        return true;
     }
 
     @Override
