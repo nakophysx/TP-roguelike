@@ -39,6 +39,7 @@ public class VueControleur extends JFrame implements Observer {
     private ImageIcon icoCapsule;
     private ImageIcon icoCoffre;
     private ImageIcon icoPorte;
+    private ImageIcon icoHole;
 
     private JLabel[][] tabJLabel; // cases graphique (au moment du rafraichissement, chaque case va être associée à une icône, suivant ce qui est présent dans le modèle)
 
@@ -76,16 +77,17 @@ public class VueControleur extends JFrame implements Observer {
     }
 
     private void chargerLesIcones() {
-        icoHeroDroite = chargerIcone("Images/PacmanRight.png");
-        icoHeroGauche = chargerIcone("Images/PacmanLeft.png");
-        icoHeroBas = chargerIcone("Images/PacmanDown.png");
-        icoHeroHaut = chargerIcone("Images/PacmanUp.png");
+        icoHeroDroite = chargerIcone("Images/fairyRight.png");
+        icoHeroGauche = chargerIcone("Images/fairyLeft.png");
+        icoHeroBas = chargerIcone("Images/fairyDown.png");
+        icoHeroHaut = chargerIcone("Images/fairyUp.png");
         icoCaseNormale = chargerIcone("Images/Vide.png");
         icoMur = chargerIcone("Images/Mur.png");
         icoCle = chargerIcone("Images/Cle.png");
         icoCoffre = chargerIcone("Images/Coffre.png");
         icoCapsule = chargerIcone("Images/Capsule.png");
         icoPorte = chargerIcone("Images/Porte.png");
+        icoHole = chargerIcone("Images/Hole.png");
     }
 
     private ImageIcon chargerIcone(String urlIcone) {
