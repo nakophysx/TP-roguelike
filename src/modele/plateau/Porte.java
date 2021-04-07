@@ -9,7 +9,11 @@ public class Porte extends EntiteStatique implements Interactive{
         return !verrouille;
     }
 
-    @Override
+    public boolean disponible()
+    {
+        return verrouille;
+    }
+
     public void interact()
     {
         if(verrouille && jeu.getHeros().getInventaire().utiliserCle())

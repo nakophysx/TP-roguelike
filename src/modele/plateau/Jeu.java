@@ -101,11 +101,9 @@ public class Jeu extends Observable implements Runnable {
 
     public void interact(int x, int y){
         EntiteStatique e = getEntite(x,y);
-        if(e instanceof Pickup){
-            Pickup p = (Pickup) e;
+        if(e instanceof Interactive){
+            Interactive p = (Interactive) e;
             p.interact();
-            getGrille()[x][y] = new CaseNormale(this, false);
         }
     }
-
 }

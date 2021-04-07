@@ -13,6 +13,7 @@ public class Capsule extends Pickup {
         if (disponible)
         {
             jeu.getHeros().getInventaire().ajouterCapsule();
+            disponible = false;
         }
     }
 }

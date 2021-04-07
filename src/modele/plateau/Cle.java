@@ -14,7 +14,7 @@ public class Cle extends Pickup {
         if (disponible)
         {
             jeu.getHeros().getInventaire().ajouterCle();
-
+            disponible = false;
         }
     }
 }

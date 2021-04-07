@@ -34,28 +34,28 @@ public class Heros {
     public void droite() {
         if (traversable(x+1, y)) {
             x ++;
-            jeu.usage_unique(x,y);
+            jeu.interact(x,y);
         }
     }
 
     public void gauche() {
         if (traversable(x-1, y)) {
             x --;
-            jeu.usage_unique(x,y);
+            jeu.interact(x,y);
         }
     }
 
     public void bas() {
         if (traversable(x, y+1)) {
             y ++;
-            jeu.usage_unique(x,y);
+            jeu.interact(x,y);
         }
     }
 
     public void haut() {
         if (traversable(x, y-1)) {
             y --;
-            jeu.usage_unique(x,y);
+            jeu.interact(x,y);
         }
     }
 
