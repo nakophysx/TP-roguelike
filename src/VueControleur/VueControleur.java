@@ -62,7 +62,13 @@ public class VueControleur extends JFrame implements Observer {
                     case KeyEvent.VK_RIGHT : jeu.getHeros().droite(); break;
                     case KeyEvent.VK_DOWN : jeu.getHeros().bas(); break;
                     case KeyEvent.VK_UP : jeu.getHeros().haut(); break;
-                    case KeyEvent.VK_SPACE: jeu.interact(jeu.getHeros().getX(), jeu.getHeros().getY()); break;
+                    case KeyEvent.VK_SPACE:
+                        switch (jeu.getHeros().getOrientation()){
+                            case BAS : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() + 1); break;
+                            case HAUT : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() - 1); break;
+                            case DROIT : jeu.interact( jeu.getHeros().getX() + 1, jeu.getHeros().getY()); break;
+                            case GAUCHE: jeu.interact( jeu.getHeros().getX() - 1, jeu.getHeros().getY()); break;
+                        } break;
                     //case KeyEvent.VK_I: jeu.openinventaire(); break;
                 }
             }
@@ -153,7 +159,7 @@ public class VueControleur extends JFrame implements Observer {
             case BAS:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroBas);
                 break;
-            case DROITE:
+            case DROIT:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroDroite);
                 break;
             case GAUCHE:

@@ -18,10 +18,13 @@ public class Jeu extends Observable implements Runnable {
     private int pause = 200; // période de rafraichissement
 
     private Heros heros;
-
-    private EntiteStatique[][] grilleEntitesStatiques = new EntiteStatique[SIZE_X][SIZE_Y];
+    private Room[] room_array;
+    private int current_room, room_max = 4;
 
     public Jeu() {
+        room_array = new Room[room_max];
+        current_room = 0;
+
         initialisationDesEntites();
     }
 
@@ -30,45 +33,20 @@ public class Jeu extends Observable implements Runnable {
     }
 
     public EntiteStatique[][] getGrille() {
-        return grilleEntitesStatiques;
+        return room_array[current_room].getGrille();
     }
 
 	public EntiteStatique getEntite(int x, int y) {
-		if (x < 0 || x >= SIZE_X || y < 0 || y >= SIZE_Y) {
-			// L'entité demandée est en-dehors de la grille
-			return null;
-		}
-		return grilleEntitesStatiques[x][y];
+		return room_array[current_room].getEntite(x, y);
 	}
 
     private void initialisationDesEntites() {
         heros = new Heros(this, 4, 4);
 
-        // murs extérieurs horizontaux
-        for (int x = 0; x < 20; x++) {
-            addEntiteStatique(new Mur(this), x, 0);
-            addEntiteStatique(new Mur(this), x, 9);
-        }
-
-        // murs extérieurs verticaux
-        for (int y = 1; y < 9; y++) {
-            addEntiteStatique(new Mur(this), 0, y);
-            addEntiteStatique(new Mur(this), 19, y);
-        }
-
-        addEntiteStatique(new Mur(this), 2, 6);
-        addEntiteStatique(new Mur(this), 3, 6);
-        addEntiteStatique(new Cle(this), 2, 7);
-        addEntiteStatique(new Capsule(this), 2, 8);
-        addEntiteStatique(new Porte(this), 0, 5);
-        addEntiteStatique(new Coffre(this), 1, 1);
-
-        for (int x = 0; x < SIZE_X; x++) {
-            for (int y = 0; y < SIZE_Y; y++) {
-                if (grilleEntitesStatiques[x][y] == null) {
-                    grilleEntitesStatiques[x][y] = new CaseNormale(this, false);
-                }
-            }
+        for (int i = 0 ; i < room_max ; i++)
+        {
+            room_array[i] = new Room(this);
+            room_array[i].initialisationDesEntites(i);
         }
     }
 
@@ -93,17 +71,17 @@ public class Jeu extends Observable implements Runnable {
 
     }
 
-
-    private void addEntiteStatique(EntiteStatique e, int x, int y) {
-        grilleEntitesStatiques[x][y] = e;
-
-    }
-
     public void interact(int x, int y){
         EntiteStatique e = getEntite(x,y);
         if(e instanceof Interactive){
             Interactive p = (Interactive) e;
             p.interact();
         }
+    }
+
+    public void switch_room(int room_number, int new_x, int new_y)
+    {
+        current_room = room_number;
+        heros.setPosition(new_x, new_y);
     }
 }

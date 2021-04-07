@@ -8,6 +8,5 @@ public abstract class Pickup extends EntiteStatique implements Interactive{
 
     public void interact() {
         disponible = false;
-        System.out.println("nouvelle clé!");
     }
 }

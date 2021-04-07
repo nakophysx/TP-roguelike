@@ -19,7 +19,12 @@ public class Room {
         return grilleEntitesStatiques[x][y];
     }
 
-    private void initialisationDesEntites() {
+    public EntiteStatique[][] getGrille()
+    {
+        return grilleEntitesStatiques;
+    }
+
+    public void initialisationDesEntites(int room_number) {
 
         // murs extérieurs horizontaux
         for (int x = 0; x < 20; x++) {
@@ -37,7 +42,8 @@ public class Room {
         addEntiteStatique(new Mur(jeu), 3, 6);
         addEntiteStatique(new Cle(jeu), 2, 7);
         addEntiteStatique(new Capsule(jeu), 2, 8);
-        addEntiteStatique(new Porte(jeu), 0, 5);
+        addEntiteStatique(new Porte(jeu, room_number+1, 19, 5, true), 0, 5);
+        addEntiteStatique(new Porte(jeu, room_number-1, 0, 5, false), 19, 5);
         addEntiteStatique(new Coffre(jeu), 1, 1);
 
         for (int x = 0; x < size_x; x++) {
@@ -49,7 +55,7 @@ public class Room {
         }
     }
 
-    private void addEntiteStatique(EntiteStatique e, int x, int y) {
+    public void addEntiteStatique(EntiteStatique e, int x, int y) {
         grilleEntitesStatiques[x][y] = e;
 
     }

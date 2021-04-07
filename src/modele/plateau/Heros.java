@@ -30,20 +30,20 @@ public class Heros {
         jeu = _jeu;
         x = _x;
         y = _y;
-        ori = Orientation.DROITE;
+        ori = Orientation.DROIT;
         inv = new Inventaire();
     }
 
     public Inventaire getInventaire() {return inv;}
 
     public void droite() {
-        if(ori == Orientation.DROITE)
+        if(ori == Orientation.DROIT)
         {
             if (traversable(x+1, y)) {
                 x++;
                 jeu.interact(x, y);
             }
-        } else { ori = Orientation.DROITE; }
+        } else { ori = Orientation.DROIT; }
     }
 
     public void gauche() {
@@ -74,9 +74,15 @@ public class Heros {
 
     }
 
+    public void setPosition(int _x, int _y)
+    {
+        x = _x;
+        y = _y;
+    }
+
     private boolean traversable(int x, int y) {
 
-        if (x >0 && x < jeu.SIZE_X && y > 0 && y < jeu.SIZE_Y) {
+        if (x >= 0 && x <= jeu.SIZE_X && y >= 0 && y <= jeu.SIZE_Y) {
             return jeu.getEntite(x, y).traversable();
         } else {
             return false;
