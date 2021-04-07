@@ -42,8 +42,6 @@ public class Jeu extends Observable implements Runnable {
     private void initialisationDesEntites() {
         heros = new Heros(this, 4, 4);
 
-
-
         // murs extérieurs horizontaux
         for (int x = 0; x < 20; x++) {
             addEntiteStatique(new Mur(this), x, 0);
@@ -68,11 +66,8 @@ public class Jeu extends Observable implements Runnable {
                 if (grilleEntitesStatiques[x][y] == null) {
                     grilleEntitesStatiques[x][y] = new CaseNormale(this);
                 }
-
             }
         }
-
-
     }
 
     public void start() {

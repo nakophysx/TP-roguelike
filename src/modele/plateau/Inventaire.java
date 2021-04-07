@@ -15,7 +15,10 @@ public class Inventaire {
         } else return false;
     }
 
-    public void ajouterCle() { nCles++;}
+    public void ajouterCle() {
+        nCles++;
+        System.out.println("une clé a été ajoutée");
+    }
 
     public boolean utiliserCapsule(){
         if (nCapsules != 0)
