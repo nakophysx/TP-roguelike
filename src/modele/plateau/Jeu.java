@@ -5,6 +5,8 @@
  */
 package modele.plateau;
 
+import com.sun.source.tree.CaseTree;
+
 import java.util.Observable;
 
 
@@ -95,6 +97,15 @@ public class Jeu extends Observable implements Runnable {
     private void addEntiteStatique(EntiteStatique e, int x, int y) {
         grilleEntitesStatiques[x][y] = e;
 
+    }
+
+    public void interact(int x, int y){
+        EntiteStatique e = getEntite(x,y);
+        if(e instanceof Pickup){
+            Pickup p = (Pickup) e;
+            p.interact();
+            getGrille()[x][y] = new CaseNormale(this);
+        }
     }
 
 }

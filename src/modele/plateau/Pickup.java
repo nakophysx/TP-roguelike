@@ -4,7 +4,8 @@ public abstract class Pickup extends EntiteStatique implements Interactive{
 
     public Pickup(Jeu _jeu) { super(_jeu);}
 
-    public void interact(){
+    public void interact() {
         disponible = false;
+        System.out.println("nouvelle clé!");
     }
 }

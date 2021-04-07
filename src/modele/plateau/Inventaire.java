@@ -28,5 +28,8 @@ public class Inventaire {
         } else return false;
     }
 
-    public void ajouterCapsule() { nCapsules++;}
+    public void ajouterCapsule() {
+        nCapsules++;
+        System.out.println("une capsule a été ajoutée");
+    }
 }

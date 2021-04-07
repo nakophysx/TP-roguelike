@@ -5,7 +5,7 @@ public class Cle extends Pickup {
 
     @Override
     public boolean traversable() {
-        return false;
+        return true;
     }
 
     @Override
@@ -14,6 +14,7 @@ public class Cle extends Pickup {
         if (disponible)
         {
             jeu.getHeros().getInventaire().ajouterCle();
+
         }
     }
 }
