@@ -66,7 +66,7 @@ public class Jeu extends Observable implements Runnable {
         for (int x = 0; x < SIZE_X; x++) {
             for (int y = 0; y < SIZE_Y; y++) {
                 if (grilleEntitesStatiques[x][y] == null) {
-                    grilleEntitesStatiques[x][y] = new CaseNormale(this);
+                    grilleEntitesStatiques[x][y] = new CaseNormale(this, false);
                 }
             }
         }
@@ -104,7 +104,7 @@ public class Jeu extends Observable implements Runnable {
         if(e instanceof Pickup){
             Pickup p = (Pickup) e;
             p.interact();
-            getGrille()[x][y] = new CaseNormale(this);
+            getGrille()[x][y] = new CaseNormale(this, false);
         }
     }
 
