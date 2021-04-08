@@ -42,9 +42,11 @@ public class Room {
         addEntiteStatique(new Mur(jeu), 3, 6);
         addEntiteStatique(new Cle(jeu), 2, 7);
         addEntiteStatique(new Capsule(jeu), 2, 8);
+        addEntiteStatique(new CaseVide(jeu), 5, 5);
         addEntiteStatique(new Porte(jeu, room_number+1, 19, 5, true), 0, 5);
         addEntiteStatique(new Porte(jeu, room_number-1, 0, 5, false), 19, 5);
         addEntiteStatique(new Coffre(jeu), 1, 1);
+        addEntiteStatique(new CaseNormale(jeu, true), 4, 5);
 
         for (int x = 0; x < size_x; x++) {
             for (int y = 0; y < size_y; y++) {

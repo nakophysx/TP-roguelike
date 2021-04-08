@@ -32,4 +32,10 @@ public class Inventaire {
         nCapsules++;
         System.out.println("une capsule a été ajoutée");
     }
+
+    public void viderCapsule(){
+        if(nCapsules != 0){
+            nCapsules = 0;
+        }
+    }
 }

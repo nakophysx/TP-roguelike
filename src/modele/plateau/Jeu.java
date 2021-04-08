@@ -83,5 +83,6 @@ public class Jeu extends Observable implements Runnable {
     {
         current_room = room_number;
         heros.setPosition(new_x, new_y);
+        heros.getInventaire().viderCapsule();
     }
 }
