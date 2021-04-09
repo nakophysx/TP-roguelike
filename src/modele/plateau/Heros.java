@@ -43,6 +43,14 @@ public class Heros {
                 x++;
                 jeu.interact(x, y);
             }
+            else {
+               EntiteStatique trou = jeu.getEntite(x+1, y);
+               if(trou instanceof CaseVide){
+                   if(traversable(x+2, y)){
+                       x = x+2;
+                   }
+               }
+            }
         } else { ori = Orientation.DROIT; }
     }
 
@@ -51,6 +59,14 @@ public class Heros {
             if (traversable(x - 1, y)) {
                 x--;
                 jeu.interact(x, y);
+            }
+            else {
+                EntiteStatique trou = jeu.getEntite(x-1, y);
+                if(trou instanceof CaseVide){
+                    if(traversable(x-2, y)){
+                        x = x-2;
+                    }
+                }
             }
         } else { ori = Orientation.GAUCHE; }
     }
@@ -61,6 +77,14 @@ public class Heros {
                 y++;
                 jeu.interact(x, y);
             }
+            else {
+                EntiteStatique trou = jeu.getEntite(x, y+1);
+                if(trou instanceof CaseVide){
+                    if(traversable(x, y+2)){
+                        y = y+2;
+                    }
+                }
+            }
         } else {ori = Orientation.BAS;}
     }
 
@@ -69,6 +93,14 @@ public class Heros {
             if (traversable(x, y-1)) {
                 y --;
                 jeu.interact(x,y);
+            }
+            else {
+                EntiteStatique trou = jeu.getEntite(x, y-1);
+                if(trou instanceof CaseVide){
+                    if(traversable(x, y-2)){
+                        y = y-2;
+                    }
+                }
             }
         } else {ori = Orientation.HAUT; }
 
