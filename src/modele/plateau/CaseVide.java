@@ -1,6 +1,6 @@
 package modele.plateau;
 
-public class CaseVide extends EntiteStatique implements Interactive {
+public class CaseVide extends EntiteStatique {
     boolean traversable = false;
 
     public CaseVide(Jeu _jeu) {
@@ -9,13 +9,5 @@ public class CaseVide extends EntiteStatique implements Interactive {
 
     public boolean traversable() {
         return this.traversable;
-    }
-
-    public boolean disponible() {
-        return !this.traversable;
-    }
-
-    public void interact() {
-
     }
 }
