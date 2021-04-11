@@ -48,6 +48,7 @@ public class Heros {
                if(trou instanceof CaseVide){
                    if(traversable(x+2, y)){
                        x = x+2;
+                       jeu.interact(x, y);
                    }
                }
             }
@@ -65,6 +66,7 @@ public class Heros {
                 if(trou instanceof CaseVide){
                     if(traversable(x-2, y)){
                         x = x-2;
+                        jeu.interact(x, y);
                     }
                 }
             }
@@ -82,6 +84,7 @@ public class Heros {
                 if(trou instanceof CaseVide){
                     if(traversable(x, y+2)){
                         y = y+2;
+                        jeu.interact(x, y);
                     }
                 }
             }
@@ -99,6 +102,7 @@ public class Heros {
                 if(trou instanceof CaseVide){
                     if(traversable(x, y-2)){
                         y = y-2;
+                        jeu.interact(x, y);
                     }
                 }
             }

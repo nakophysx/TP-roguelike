@@ -1,4 +1,4 @@
 ./TP-roguelike.iml
-.idea
-.out
+./.idea
+./out/*
 /TP-roguelike.iml

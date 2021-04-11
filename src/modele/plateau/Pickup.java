@@ -6,7 +6,5 @@ public abstract class Pickup extends EntiteStatique implements Interactive{
 
     public boolean disponible(){return disponible;}
 
-    public void interact() {
-        disponible = false;
-    }
+    public abstract void interact();
 }
