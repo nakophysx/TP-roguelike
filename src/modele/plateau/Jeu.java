@@ -19,12 +19,13 @@ public class Jeu extends Observable implements Runnable {
     private int pause = 200; // période de rafraichissement
 
     private Heros heros;
-    private Room[] room_array;
-    private int current_room, room_max = 4;
+    private Room[][] room_array;
+    private int current_x, current_y, room_max_x = 4, room_max_y = 4;
 
     public Jeu() {
-        room_array = new Room[room_max];
-        current_room = 0;
+        room_array = new Room[room_max_x][room_max_y];
+        current_x = 0;
+        current_y = 0;
 
         initialisationDesEntites();
     }
@@ -34,20 +35,44 @@ public class Jeu extends Observable implements Runnable {
     }
 
     public EntiteStatique[][] getGrille() {
-        return room_array[current_room].getGrille();
+        return room_array[current_x][current_y].getGrille();
     }
 
 	public EntiteStatique getEntite(int x, int y) {
-		return room_array[current_room].getEntite(x, y);
+		return room_array[current_x][current_y].getEntite(x, y);
 	}
 
     private void initialisationDesEntites() {
         heros = new Heros(this, 4, 4);
 
-        for (int i = 0 ; i < room_max ; i++)
+
+        room_array[0][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.DROIT});
+        room_array[0][room_max_y-1] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE});
+        room_array[room_max_x-1][0] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.DROIT});
+        room_array[room_max_x-1][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE});
+
+        for (int i = 1 ; i < room_max_x - 1; i++)
         {
-            room_array[i] = new Room(this);
-            room_array[i].initialisationDesEntites(i);
+            room_array[i][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE, Orientation.DROIT});
+            room_array[i][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE, Orientation.DROIT});
+        }
+
+        for (int i = 1 ; i < room_max_y - 1; i++)
+        {
+            room_array[0][i] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.HAUT, Orientation.DROIT});
+            room_array[room_max_x-1][i] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE, Orientation.BAS});
+        }
+
+        for (int i = 1 ; i < room_max_x - 1; i++) {
+            for (int j = 1; j < room_max_y - 1; j++) {
+                room_array[i][j] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.BAS, Orientation.GAUCHE, Orientation.DROIT});
+            }
+        }
+
+        for (int i = 0; i < room_max_x; i++) {
+            for (int j = 0; j < room_max_y; j++) {
+                room_array[i][j].initialisationDesEntites(i, j);
+            }
         }
     }
 
@@ -80,15 +105,16 @@ public class Jeu extends Observable implements Runnable {
         }
     }
 
-    public void switch_room(int room_number, int new_x, int new_y)
+    public void switch_room(int room_number_x, int room_number_y, int new_x, int new_y)
     {
-        current_room = room_number;
+        current_x = room_number_x;
+        current_y = room_number_y;
         heros.setPosition(new_x, new_y);
         heros.getInventaire().viderCapsule();
     }
 
     public void setPickup (Pickup p, int _x, int _y)
     {
-        room_array[current_room].addEntiteStatique(p, _x, _y);
+        room_array[current_x][current_y].addEntiteStatique(p, _x, _y);
     }
 }

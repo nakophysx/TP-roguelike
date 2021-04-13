@@ -2,10 +2,12 @@ package modele.plateau;
 
 public class Room {
 
-    public Room(Jeu j) {
+    public Room(Jeu j, Orientation[] oris) {
         jeu = j;
+        orientations = oris;
     }
 
+    private Orientation[] orientations;
     private int size_x = 20;
     private int size_y = 10;
     private Jeu jeu;
@@ -24,7 +26,7 @@ public class Room {
         return grilleEntitesStatiques;
     }
 
-    public void initialisationDesEntites(int room_number) {
+    public void initialisationDesEntites(int room_x, int room_y) {
 
         // murs extérieurs horizontaux
         for (int x = 0; x < 20; x++) {
@@ -38,21 +40,67 @@ public class Room {
             addEntiteStatique(new Mur(jeu), 19, y);
         }
 
+        // Géneration de Salle
         addEntiteStatique(new Mur(jeu), 2, 6);
         addEntiteStatique(new Mur(jeu), 3, 6);
-        addEntiteStatique(new Cle(jeu), 2, 7);
-        addEntiteStatique(new Capsule(jeu), 2, 8);
         addEntiteStatique(new CaseVide(jeu), 5, 5);
-        addEntiteStatique(new Porte(jeu, room_number+1, 19, 5, true), 0, 5);
-        addEntiteStatique(new Porte(jeu, room_number-1, 0, 5, false), 19, 5);
         addEntiteStatique(new Coffre(jeu), 1, 1);
         addEntiteStatique(new CaseNormale(jeu, true), 4, 5);
-
         for (int x = 0; x < size_x; x++) {
             for (int y = 0; y < size_y; y++) {
                 if (grilleEntitesStatiques[x][y] == null) {
                     grilleEntitesStatiques[x][y] = new CaseNormale(jeu, false);
                 }
+            }
+        }
+        // Fin géneration de salle
+
+        for (Orientation o:orientations)
+        {
+            switch (o){
+                case GAUCHE:
+                    addEntiteStatique(new Porte(jeu, room_x-1, room_y, 19, 5, true), 0, 5);
+                    break;
+                case DROIT:
+                    addEntiteStatique(new Porte(jeu, room_x+1, room_y, 0, 5, true), 19, 5);
+                    break;
+                case BAS:
+                    addEntiteStatique(new Porte(jeu, room_x, room_y+1, 10, 0, true), 10, 9);
+                    break;
+                case HAUT:
+                    addEntiteStatique(new Porte(jeu, room_x, room_y-1, 10, 9, true), 10, 0);
+                    break;
+            }
+        }
+
+        boolean set = false;
+        int x, y;
+        EntiteStatique e;
+
+        while (!set)
+        {
+            x = (int)Math.floor(Math.random()*20);
+            y = (int)Math.floor(Math.random()*10);
+
+            e = grilleEntitesStatiques[x][y];
+            if (e instanceof CaseNormale && !((CaseNormale) e).usage_unique)
+            {
+                grilleEntitesStatiques[x][y] = new Cle(jeu);
+                set = true;
+            }
+
+        }
+
+        set = false;
+        while (!set)
+        {
+            x = (int)Math.floor(Math.random()*20);
+            y = (int)Math.floor(Math.random()*10);
+            e = grilleEntitesStatiques[x][y];
+            if (e instanceof CaseNormale && !((CaseNormale) e).usage_unique)
+            {
+                grilleEntitesStatiques[x][y] = new Capsule(jeu);
+                set= true;
             }
         }
     }

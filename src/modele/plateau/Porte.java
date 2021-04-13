@@ -1,41 +1,43 @@
 package modele.plateau;
 
 public class Porte extends EntiteStatique implements Interactive{
-    private boolean verrouille;
-    private int next_room;
+    private boolean locked;
+    private int next_room_x;
+    private int next_room_y;
     private int next_x;
     private int next_y;
 
-    public Porte(Jeu _jeu, int to_room, int _x, int _y, boolean _locked)
+    public Porte(Jeu _jeu, int to_room_x, int to_room_y, int _x, int _y, boolean _locked)
     {
         super(_jeu);
-        next_room = to_room;
+        next_room_x = to_room_x;
+        next_room_y = to_room_y;
         next_x = _x;
         next_y = _y;
-        verrouille = _locked;
+        locked = _locked;
 
     }
 
     @Override
     public boolean traversable() {
         System.out.println("texte");
-        return !verrouille;
+        return !locked;
     }
 
     public boolean disponible()
     {
-        return verrouille;
+        return locked;
     }
 
     public void interact()
     {
-        if(verrouille) {
+        if(locked) {
             if (jeu.getHeros().getInventaire().utiliserCle()) {
-                verrouille = false;
+                locked = false;
                 System.out.println("porte deverrouillée");
             }
         } else {
-                jeu.switch_room(next_room, next_x, next_y);
+                jeu.switch_room(next_room_x, next_room_y, next_x, next_y);
         }
 
     }
