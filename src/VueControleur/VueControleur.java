@@ -50,7 +50,7 @@ public class VueControleur extends JFrame implements Observer {
 
     public VueControleur(Jeu _jeu) {
         sizeX = _jeu.SIZE_X;
-        sizeY = _jeu.SIZE_Y;
+        sizeY = _jeu.SIZE_Y + 1;
         jeu = _jeu;
 
         chargerLesIcones();
@@ -111,7 +111,7 @@ public class VueControleur extends JFrame implements Observer {
 
     private void placerLesComposantsGraphiques() {
         setTitle("Roguelike");
-        setSize(400, 250);
+        setSize(400, 275);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // permet de terminer l'application à la fermeture de la fenêtre
 
         JComponent grilleJLabels = new JPanel(new GridLayout(sizeY, sizeX)); // grilleJLabels va contenir les cases graphiques et les positionner sous la forme d'une grille
@@ -133,47 +133,56 @@ public class VueControleur extends JFrame implements Observer {
      * Il y a une grille du côté du modèle ( jeu.getGrille() ) et une grille du côté de la vue (tabJLabel)
      */
     private void mettreAJourAffichage() {
+        for (int i = 0; i < jeu.getHeros().getLifes(); i++)
+        {
+            tabJLabel[i][0].setIcon(icoHeroDroite);
+        }
+
+        tabJLabel[12][0].setIcon(icoCle);
+        tabJLabel[13][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCles()));
+
+        tabJLabel[16][0].setIcon(icoCapsule);
+        tabJLabel[17][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCapsules()));
 
         for (int x = 0; x < sizeX; x++) {
-            for (int y = 0; y < sizeY; y++) {
+            for (int y = 0; y < sizeY-1; y++) {
 				EntiteStatique e = jeu.getEntite(x, y);
                 if (e instanceof Mur) {
-                    tabJLabel[x][y].setIcon(icoMur);
+                    tabJLabel[x][y+1].setIcon(icoMur);
                 }else if (e instanceof Interactive){
                     Interactive i = (Interactive) e;
                     if (i.disponible()) {
                         if (e instanceof Cle) {
-                            tabJLabel[x][y].setIcon(icoCle);
+                            tabJLabel[x][y+1].setIcon(icoCle);
                         } else if (e instanceof Coffre) {
-                            tabJLabel[x][y].setIcon(icoCoffre);
+                            tabJLabel[x][y+1].setIcon(icoCoffre);
                         } else if (e instanceof Capsule) {
-                            tabJLabel[x][y].setIcon(icoCapsule);
+                            tabJLabel[x][y+1].setIcon(icoCapsule);
                         } else if (e instanceof Porte) {
-                            tabJLabel[x][y].setIcon(icoPorte);
+                            tabJLabel[x][y+1].setIcon(icoPorte);
                         } else if (e instanceof CaseNormale) {
-                            tabJLabel[x][y].setIcon(icoFire);
+                            tabJLabel[x][y+1].setIcon(icoFire);
                         }
-                    }else {tabJLabel[x][y].setIcon(icoCaseNormale);}
+                    }else {tabJLabel[x][y+1].setIcon(icoCaseNormale);}
                 } else if (e instanceof CaseVide) {
-                    tabJLabel[x][y].setIcon(icoHole);
+                    tabJLabel[x][y+1].setIcon(icoHole);
                 }
             }
 
         }
 
-
         switch(jeu.getHeros().getOrientation()) {
             case HAUT:
-                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroHaut);
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroHaut);
                 break;
             case BAS:
-                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroBas);
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroBas);
                 break;
             case DROIT:
-                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroDroite);
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroDroite);
                 break;
             case GAUCHE:
-                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()].setIcon(icoHeroGauche);
+                tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroGauche);
                 break;
         }
 

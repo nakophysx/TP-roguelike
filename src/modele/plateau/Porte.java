@@ -20,7 +20,6 @@ public class Porte extends EntiteStatique implements Interactive{
 
     @Override
     public boolean traversable() {
-        System.out.println("texte");
         return !locked;
     }
 
@@ -41,5 +40,7 @@ public class Porte extends EntiteStatique implements Interactive{
         }
 
     }
+
+    public void unlock() {locked = false;}
 
 }

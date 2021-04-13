@@ -8,6 +8,7 @@ package modele.plateau;
  * Héros du jeu
  */
 public class Heros {
+    private int lifes = 3;
     private int x;
     private int y;
     private Inventaire inv;
@@ -124,5 +125,7 @@ public class Heros {
             return false;
         }
     }
+
+    public int getLifes() {return lifes;}
 }
 

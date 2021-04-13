@@ -38,4 +38,12 @@ public class Inventaire {
             nCapsules = 0;
         }
     }
+
+    public int getnCapsules() {
+        return nCapsules;
+    }
+
+    public int getnCles() {
+        return nCles;
+    }
 }

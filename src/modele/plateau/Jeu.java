@@ -110,6 +110,7 @@ public class Jeu extends Observable implements Runnable {
         current_x = room_number_x;
         current_y = room_number_y;
         heros.setPosition(new_x, new_y);
+        ((Porte) room_array[current_x][current_y].getEntite(new_x, new_y)).unlock();
         heros.getInventaire().viderCapsule();
     }
 

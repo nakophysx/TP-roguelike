@@ -1,5 +1,8 @@
 package modele.plateau;
 
+import java.io.File;
+import java.util.Scanner;
+
 public class Room {
 
     public Room(Jeu j, Orientation[] oris) {
@@ -26,6 +29,7 @@ public class Room {
         return grilleEntitesStatiques;
     }
 
+    //9,4
     public void initialisationDesEntites(int room_x, int room_y) {
 
         // murs extérieurs horizontaux
@@ -41,18 +45,7 @@ public class Room {
         }
 
         // Géneration de Salle
-        addEntiteStatique(new Mur(jeu), 2, 6);
-        addEntiteStatique(new Mur(jeu), 3, 6);
-        addEntiteStatique(new CaseVide(jeu), 5, 5);
-        addEntiteStatique(new Coffre(jeu), 1, 1);
-        addEntiteStatique(new CaseNormale(jeu, true), 4, 5);
-        for (int x = 0; x < size_x; x++) {
-            for (int y = 0; y < size_y; y++) {
-                if (grilleEntitesStatiques[x][y] == null) {
-                    grilleEntitesStatiques[x][y] = new CaseNormale(jeu, false);
-                }
-            }
-        }
+        setRoom((int)Math.floor(Math.random()*3));
         // Fin géneration de salle
 
         for (Orientation o:orientations)
@@ -110,4 +103,42 @@ public class Room {
 
     }
 
+    public void setRoom(int file_id)
+    {
+        switch (file_id)
+        {
+            case 1:
+                addEntiteStatique(new CaseVide(jeu), 3, 4);
+                addEntiteStatique(new CaseVide(jeu), 3, 5);
+                addEntiteStatique(new CaseVide(jeu), 3, 6);
+                addEntiteStatique(new CaseVide(jeu), 7, 4);
+                addEntiteStatique(new CaseVide(jeu), 7, 5);
+                addEntiteStatique(new CaseVide(jeu), 7, 6);
+                addEntiteStatique(new CaseVide(jeu), 4, 3);
+                addEntiteStatique(new CaseVide(jeu), 5, 3);
+                addEntiteStatique(new CaseVide(jeu), 6, 3);
+                addEntiteStatique(new CaseVide(jeu), 4, 7);
+                addEntiteStatique(new CaseVide(jeu), 5, 7);
+                addEntiteStatique(new CaseVide(jeu), 6, 7);
+                addEntiteStatique(new Coffre(jeu), 5, 5);
+                break;
+            case 0:
+            default:
+                addEntiteStatique(new Mur(jeu), 2, 6);
+                addEntiteStatique(new Mur(jeu), 3, 6);
+                addEntiteStatique(new CaseVide(jeu), 5, 5);
+                addEntiteStatique(new Coffre(jeu), 2, 2);
+                addEntiteStatique(new CaseNormale(jeu, true), 4, 5);
+                break;
+
+        }
+
+        for (int x = 0; x < size_x; x++) {
+            for (int y = 0; y < size_y; y++) {
+                if (grilleEntitesStatiques[x][y] == null) {
+                    grilleEntitesStatiques[x][y] = new CaseNormale(jeu, false);
+                }
+            }
+        }
+    }
 }
