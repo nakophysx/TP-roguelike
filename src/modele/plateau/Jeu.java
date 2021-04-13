@@ -7,6 +7,7 @@ package modele.plateau;
 
 import com.sun.source.tree.CaseTree;
 
+import java.lang.reflect.Type;
 import java.util.Observable;
 
 
@@ -84,5 +85,10 @@ public class Jeu extends Observable implements Runnable {
         current_room = room_number;
         heros.setPosition(new_x, new_y);
         heros.getInventaire().viderCapsule();
+    }
+
+    public void setPickup (Pickup p, int _x, int _y)
+    {
+        room_array[current_room].addEntiteStatique(p, _x, _y);
     }
 }
