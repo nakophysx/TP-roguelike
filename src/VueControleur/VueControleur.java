@@ -41,7 +41,7 @@ public class VueControleur extends JFrame implements Observer {
     private ImageIcon icoPorte;
     private ImageIcon icoHole;
     private ImageIcon icoFire;
-    private ImageIcon icoDrops;
+    private ImageIcon icoTrap;
 
 
 
@@ -92,7 +92,7 @@ public class VueControleur extends JFrame implements Observer {
         icoPorte = chargerIcone("Images/Porte.png");
         icoHole = chargerIcone("Images/Hole.png");
         icoFire = chargerIcone("Images/fire.png");
-        icoDrops = chargerIcone("Images/drops.png");
+        icoTrap = chargerIcone("Images/Trap.png");
     }
 
     private ImageIcon chargerIcone(String urlIcone) {
@@ -132,9 +132,13 @@ public class VueControleur extends JFrame implements Observer {
      * Il y a une grille du côté du modèle ( jeu.getGrille() ) et une grille du côté de la vue (tabJLabel)
      */
     private void mettreAJourAffichage() {
-        for (int i = 0; i < jeu.getHeros().getLifes(); i++)
+        int a;
+        for (a = 0; a < jeu.getHeros().getLifes(); a++)
         {
-            tabJLabel[i][0].setIcon(icoHeroDroite);
+            tabJLabel[a][0].setIcon(icoHeroDroite);
+        }
+        for(int j=a; j<12; j++){
+            tabJLabel[j][0].setIcon(icoCaseNormale);
         }
 
         tabJLabel[12][0].setIcon(icoCle);
@@ -161,6 +165,8 @@ public class VueControleur extends JFrame implements Observer {
                             tabJLabel[x][y+1].setIcon(icoPorte);
                         } else if (e instanceof CaseNormale) {
                             tabJLabel[x][y+1].setIcon(icoFire);
+                        } else if (e instanceof CasePic) {
+                            tabJLabel[x][y + 1].setIcon(icoTrap);
                         }
                     }else {tabJLabel[x][y+1].setIcon(icoCaseNormale);}
                 } else if (e instanceof CaseVide) {

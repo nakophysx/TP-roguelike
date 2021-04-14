@@ -127,5 +127,11 @@ public class Heros {
     }
 
     public int getLifes() {return lifes;}
+
+    public void loseLifes(){
+        lifes--;
+        System.out.println(lifes);
+    }
+
 }
 
