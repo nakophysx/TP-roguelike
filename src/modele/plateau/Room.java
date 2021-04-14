@@ -104,6 +104,9 @@ public class Room {
     {
         switch (file_id)
         {
+            case 2 :
+                addEntiteStatique(new CasePic(jeu), 4, 3);
+                break;
             case 1:
                 addEntiteStatique(new CaseVide(jeu), 3, 4);
                 addEntiteStatique(new CaseVide(jeu), 3, 5);
