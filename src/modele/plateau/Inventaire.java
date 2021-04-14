@@ -2,6 +2,7 @@ package modele.plateau;
 public class Inventaire {
     public int nCles;
     public int nCapsules;
+    public int nPotions;
 
     public Inventaire(){
         nCles = 0;
@@ -33,6 +34,18 @@ public class Inventaire {
         System.out.println("une capsule a été ajoutée");
     }
 
+    public boolean utiliserPotion(){
+        if (nPotions != 0)
+        {
+            nPotions--;
+            return true;
+        } else return false;
+    }
+
+    public void ajouterPotion() {
+        nPotions++;
+    }
+
     public void viderCapsule(){
         if(nCapsules != 0){
             nCapsules = 0;
@@ -45,5 +58,9 @@ public class Inventaire {
 
     public int getnCles() {
         return nCles;
+    }
+
+    public int getnPotions() {
+        return nPotions;
     }
 }

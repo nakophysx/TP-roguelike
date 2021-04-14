@@ -42,6 +42,7 @@ public class VueControleur extends JFrame implements Observer {
     private ImageIcon icoHole;
     private ImageIcon icoFire;
     private ImageIcon icoTrap;
+    private ImageIcon icoPotion;
 
 
 
@@ -67,11 +68,15 @@ public class VueControleur extends JFrame implements Observer {
                     case KeyEvent.VK_RIGHT : jeu.getHeros().droite(); break;
                     case KeyEvent.VK_DOWN : jeu.getHeros().bas(); break;
                     case KeyEvent.VK_UP : jeu.getHeros().haut(); break;
+                    case KeyEvent.VK_C :
+                        if(jeu.getHeros().getInventaire().utiliserPotion())
+                            jeu.getHeros().gainLifes();
+                        break;
                     case KeyEvent.VK_SPACE:
                         switch (jeu.getHeros().getOrientation()){
                             case BAS : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() + 1); break;
                             case HAUT : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() - 1); break;
-                            case DROIT : jeu.interact( jeu.getHeros().getX() + 1, jeu.getHeros().getY()); break;
+                            case DROITE : jeu.interact( jeu.getHeros().getX() + 1, jeu.getHeros().getY()); break;
                             case GAUCHE: jeu.interact( jeu.getHeros().getX() - 1, jeu.getHeros().getY()); break;
                         } break;
                 }
@@ -93,6 +98,7 @@ public class VueControleur extends JFrame implements Observer {
         icoHole = chargerIcone("Images/Hole.png");
         icoFire = chargerIcone("Images/fire.png");
         icoTrap = chargerIcone("Images/Trap.png");
+        icoPotion = chargerIcone("Images/potion.png");
     }
 
     private ImageIcon chargerIcone(String urlIcone) {
@@ -141,11 +147,14 @@ public class VueControleur extends JFrame implements Observer {
             tabJLabel[j][0].setIcon(icoCaseNormale);
         }
 
-        tabJLabel[12][0].setIcon(icoCle);
-        tabJLabel[13][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCles()));
+        tabJLabel[14][0].setIcon(icoCle);
+        tabJLabel[15][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCles()));
 
-        tabJLabel[16][0].setIcon(icoCapsule);
-        tabJLabel[17][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCapsules()));
+        tabJLabel[16][0].setIcon(icoPotion);
+        tabJLabel[17][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnPotions()));
+
+        tabJLabel[18][0].setIcon(icoCapsule);
+        tabJLabel[19][0].setText(Integer.toString(jeu.getHeros().getInventaire().getnCapsules()));
 
         for (int x = 0; x < sizeX; x++) {
             for (int y = 0; y < sizeY-1; y++) {
@@ -167,6 +176,8 @@ public class VueControleur extends JFrame implements Observer {
                             tabJLabel[x][y+1].setIcon(icoFire);
                         } else if (e instanceof CasePic) {
                             tabJLabel[x][y + 1].setIcon(icoTrap);
+                        } else if (e instanceof Potion) {
+                            tabJLabel[x][y + 1].setIcon(icoPotion);
                         }
                     }else {tabJLabel[x][y+1].setIcon(icoCaseNormale);}
                 } else if (e instanceof CaseVide) {
@@ -183,7 +194,7 @@ public class VueControleur extends JFrame implements Observer {
             case BAS:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroBas);
                 break;
-            case DROIT:
+            case DROITE:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroDroite);
                 break;
             case GAUCHE:

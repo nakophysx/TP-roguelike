@@ -130,8 +130,10 @@ public class Heros {
 
     public void loseLifes(){
         lifes--;
-        System.out.println(lifes);
     }
 
+    public void gainLifes(){
+        lifes++;
+    }
 }
 

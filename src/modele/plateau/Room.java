@@ -106,6 +106,7 @@ public class Room {
         {
             case 2 :
                 addEntiteStatique(new CasePic(jeu), 4, 3);
+                addEntiteStatique(new Potion(jeu), 5,4);
                 break;
             case 1:
                 addEntiteStatique(new CaseVide(jeu), 3, 4);
