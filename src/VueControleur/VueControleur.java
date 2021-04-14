@@ -143,7 +143,7 @@ public class VueControleur extends JFrame implements Observer {
         {
             tabJLabel[a][0].setIcon(icoHeroDroite);
         }
-        for(int j=a; j<12; j++){
+        for(int j=a; j<14; j++){
             tabJLabel[j][0].setIcon(icoCaseNormale);
         }
 
