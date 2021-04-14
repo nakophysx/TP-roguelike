@@ -47,8 +47,8 @@ public class Jeu extends Observable implements Runnable {
 
 
         room_array[0][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.DROIT});
-        room_array[0][room_max_y-1] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE});
-        room_array[room_max_x-1][0] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.DROIT});
+        room_array[0][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.DROIT});
+        room_array[room_max_x-1][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE});
         room_array[room_max_x-1][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE});
 
         for (int i = 1 ; i < room_max_x - 1; i++)

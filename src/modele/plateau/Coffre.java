@@ -5,7 +5,7 @@ public class Coffre extends Pickup {
 
     @Override
     public boolean traversable() {
-        return false;
+        return !disponible;
     }
 
     @Override
@@ -31,7 +31,7 @@ public class Coffre extends Pickup {
             }
 
             // Clés aléatoires
-            int n = (int)Math.floor(Math.random()*3);
+            int n = (int)Math.floor(Math.random()*2)+1;
             int i = 0;
             if (n!=0)
                 for(int _x = -1; _x<=1; _x++ )
@@ -53,7 +53,7 @@ public class Coffre extends Pickup {
                 }
 
             // Capsules aléatoires
-            n = (int)Math.floor(Math.random()*3);
+            n = (int)Math.floor(Math.random()*3)+1;
             i = 0;
             if (n!=0)
                 for(int _x = -1; _x<=1; _x++ )
