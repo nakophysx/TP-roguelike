@@ -1,3 +1,3 @@
 package modele.plateau;
 
-public enum Orientation {HAUT, BAS, DROIT, GAUCHE}
+public enum Orientation {HAUT, BAS, DROITE, GAUCHE}

@@ -1,8 +1,5 @@
 package modele.plateau;
 
-import java.io.File;
-import java.util.Scanner;
-
 public class Room {
 
     public Room(Jeu j, Orientation[] oris) {
@@ -54,7 +51,7 @@ public class Room {
                 case GAUCHE:
                     addEntiteStatique(new Porte(jeu, room_x-1, room_y, 19, 5, true), 0, 5);
                     break;
-                case DROIT:
+                case DROITE:
                     addEntiteStatique(new Porte(jeu, room_x+1, room_y, 0, 5, true), 19, 5);
                     break;
                 case BAS:

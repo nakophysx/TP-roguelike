@@ -5,9 +5,6 @@
  */
 package modele.plateau;
 
-import com.sun.source.tree.CaseTree;
-
-import java.lang.reflect.Type;
 import java.util.Observable;
 
 
@@ -46,26 +43,26 @@ public class Jeu extends Observable implements Runnable {
         heros = new Heros(this, 4, 4);
 
 
-        room_array[0][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.DROIT});
-        room_array[0][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.DROIT});
+        room_array[0][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.DROITE});
+        room_array[0][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.DROITE});
         room_array[room_max_x-1][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE});
         room_array[room_max_x-1][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE});
 
         for (int i = 1 ; i < room_max_x - 1; i++)
         {
-            room_array[i][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE, Orientation.DROIT});
-            room_array[i][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE, Orientation.DROIT});
+            room_array[i][0] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.GAUCHE, Orientation.DROITE});
+            room_array[i][room_max_y-1] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE, Orientation.DROITE});
         }
 
         for (int i = 1 ; i < room_max_y - 1; i++)
         {
-            room_array[0][i] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.HAUT, Orientation.DROIT});
+            room_array[0][i] = new Room(this, new Orientation[]{Orientation.BAS, Orientation.HAUT, Orientation.DROITE});
             room_array[room_max_x-1][i] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.GAUCHE, Orientation.BAS});
         }
 
         for (int i = 1 ; i < room_max_x - 1; i++) {
             for (int j = 1; j < room_max_y - 1; j++) {
-                room_array[i][j] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.BAS, Orientation.GAUCHE, Orientation.DROIT});
+                room_array[i][j] = new Room(this, new Orientation[]{Orientation.HAUT, Orientation.BAS, Orientation.GAUCHE, Orientation.DROITE});
             }
         }
 

@@ -22,7 +22,7 @@ public class Coffre extends Pickup {
                 case BAS:
                     y++;
                     break;
-                case DROIT:
+                case DROITE:
                     x++;
                     break;
                 case GAUCHE:

@@ -31,14 +31,14 @@ public class Heros {
         jeu = _jeu;
         x = _x;
         y = _y;
-        ori = Orientation.DROIT;
+        ori = Orientation.DROITE;
         inv = new Inventaire();
     }
 
     public Inventaire getInventaire() {return inv;}
 
     public void droite() {
-        if(ori == Orientation.DROIT)
+        if(ori == Orientation.DROITE)
         {
             if (traversable(x+1, y)) {
                 x++;
@@ -53,7 +53,7 @@ public class Heros {
                    }
                }
             }
-        } else { ori = Orientation.DROIT; }
+        } else { ori = Orientation.DROITE; }
     }
 
     public void gauche() {

@@ -71,7 +71,7 @@ public class VueControleur extends JFrame implements Observer {
                         switch (jeu.getHeros().getOrientation()){
                             case BAS : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() + 1); break;
                             case HAUT : jeu.interact( jeu.getHeros().getX(), jeu.getHeros().getY() - 1); break;
-                            case DROIT : jeu.interact( jeu.getHeros().getX() + 1, jeu.getHeros().getY()); break;
+                            case DROITE: jeu.interact( jeu.getHeros().getX() + 1, jeu.getHeros().getY()); break;
                             case GAUCHE: jeu.interact( jeu.getHeros().getX() - 1, jeu.getHeros().getY()); break;
                         } break;
                 }
@@ -92,7 +92,6 @@ public class VueControleur extends JFrame implements Observer {
         icoPorte = chargerIcone("Images/Porte.png");
         icoHole = chargerIcone("Images/Hole.png");
         icoFire = chargerIcone("Images/fire.png");
-        icoDrops = chargerIcone("Images/drops.png");
     }
 
     private ImageIcon chargerIcone(String urlIcone) {
@@ -177,7 +176,7 @@ public class VueControleur extends JFrame implements Observer {
             case BAS:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroBas);
                 break;
-            case DROIT:
+            case DROITE:
                 tabJLabel[jeu.getHeros().getX()][jeu.getHeros().getY()+1].setIcon(icoHeroDroite);
                 break;
             case GAUCHE:
